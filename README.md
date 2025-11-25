@@ -21,13 +21,15 @@ README.md — Main README with instructions (the file you are reading now!)
 
 (…continue for all groups)
 
-Additional materials (extra code, notes, images, etc.) may also be included.
+Additional materials (extra code, notes, images, etc.) may also be included. This repository is intended only for sharing the development of each project. Files do not need to be final — drafts, partial analyses, and work-in-progress versions are fully acceptable. Do not worry about uploading provisional material: the goal is to make your progress visible over time.
 
 ---
 
 ## 📌 Project Requirements
 
 Each group (max **3 students**) should develop a ***case study** based on one of the course topics. 
+
+
 
 
 ---
@@ -39,7 +41,6 @@ Each group (max **3 students**) should develop a ***case study** based on one of
 3. **Add / commit / push** changes  
 4. The instructor can monitor progress continuously  
 
-All files are assumed to be provisional! No need to polish them!
 ---
 
 ## 📬 Contact
