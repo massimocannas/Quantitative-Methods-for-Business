@@ -7,18 +7,19 @@ All groups can read and write anywhere in the repo, but every group must work ON
 
 
 ## Repository structure
-Each group folder should contain the following files, **always with the same names**:
 
-├─ README.md                 # Main README with instructions (the file you are reading now!)
-├─ group1/                   # Group 1 folder
-│   ├─ data/                 # a data file (.csv, .Rdata, etc) to 
-│   ├─ script.R              # R code for the analysis
-│   ├─ slides.pdf            # project slides (with a *uniform* and *simple* background)
-│   └─ README.md             # Project README (a brief presentation of the project: problem dscription, qm technique used and info on data and advancement status)
-├─ group2/                   # Group 2 folder
-│- ...
-├─ ...                  
-└─ 
+README.md — Main README with instructions (the file you are reading now!)
+
+- group1/ — Group 1 folder
+  - README.md — Project README (a brief presentation of the project: problem description, QM technique used, info on data and advancement status)
+  - data — A data file (.csv, .Rdata, etc.)
+  - script.R — R code for the analysis
+  - slides.pdf — Project slides (with a uniform and simple background)
+
+- group2/ — Group 2 folder
+  (same structure as group1)
+
+(…continue for all groups)
 
 Additional materials (extra code, notes, images, etc.) may also be included.
 
