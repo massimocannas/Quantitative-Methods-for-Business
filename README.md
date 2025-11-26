@@ -27,7 +27,7 @@ Additional materials (extra code, notes, images, etc.) may also be included. Thi
 
 ## 📌 Project Requirements
 
-Each group (max **3 students**) should develop a *** business-oriented case study** based on *one* of the course topics.
+Each group (max **3 students**) should develop a **business-oriented case study** based on *one* of the course topics.
 In the a.y. 2025-2026 the course covered:
 
 - decision analysis
