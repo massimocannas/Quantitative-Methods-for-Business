@@ -1,10 +1,10 @@
 # Quantitative-Methods-for-Business
 Repository for student projects works (a.y. 25-26)
+
 Welcome to the official repository for the course Quantitative Methods for Business.
 This repository hosts all student project work for the academic year 2025–2026.
 Each student group has its own folder inside this repository.
 All groups can read and write anywhere in the repo, but every group must work ONLY inside its assigned folder.
-
 
 ## Repository structure
 
@@ -27,9 +27,14 @@ Additional materials (extra code, notes, images, etc.) may also be included. Thi
 
 ## 📌 Project Requirements
 
-Each group (max **3 students**) should develop a ***case study** based on one of the course topics. 
+Each group (max **3 students**) should develop a *** business-oriented case study** based on *one* of the course topics.
+In the a.y. 2025 the topics are:
 
-
+- decision analysis
+- simulation models
+- linear and integer programming
+- inventory management
+- markov models
 
 
 ---
