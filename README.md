@@ -10,16 +10,16 @@ All groups can read and write anywhere in the repo, but every group must work ON
 
 README.md — Main README with instructions (the file you are reading now!)
 
-- group1/ — Group 1 folder
+- group1/ - Group 1 folder
   - README.md — Project README (a brief presentation of the project: problem description, QM technique used, info on data and advancement status)
   - data — A data file (.csv, .Rdata, etc.)
   - script.R — R code for the analysis
   - slides.pdf — Project slides (with a uniform and simple background)
 
-- group2/ — Group 2 folder
+- group2/
   (same structure as group1)
 
-(…continue for all groups)
+  (…continue for all groups).
 
 Additional materials (extra code, notes, images, etc.) may also be included. This repository is intended only for sharing the development of each project. Files do not need to be final — drafts, partial analyses, and work-in-progress versions are fully acceptable. Do not worry about uploading provisional material: the goal is to make your progress visible over time.
 
