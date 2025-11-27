@@ -11,7 +11,7 @@ All groups can read and write anywhere in the repo, but every group must work ON
 README.md — Main README with instructions (the file you are reading now!)
 
 - group1/ - Group 1 folder
-  - README.md — Project README (a brief presentation of the project: problem description, QM technique used, info on data and advancement status)
+  - README.md — Project README (must contain a list of group participants and a brief presentation of the project)
   - data — A data file (.csv, .Rdata, etc.)
   - script.R — R code for the analysis
   - slides.pdf — Project slides (with a uniform and simple background)
