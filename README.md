@@ -41,6 +41,8 @@ In the a.y. 2025-2026 the course covered:
 
 ## 🛠 Suggested Workflow
 
+If you sent me your GitHub username you have been added as a collaborator to this repo, which means you already have **write** access. You do not need to fork the repo. You can simply clone it directly, work locally on your files, and push your changes to the repository.
+
 1. **Clone** the repository to your computer  
 2. Work locally on your assigned group folder  
 3. **Add / commit / push** changes  
