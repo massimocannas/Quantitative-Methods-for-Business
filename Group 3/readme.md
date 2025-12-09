@@ -1,3 +1,2 @@
-Alessia Sini
-Alice Zuddas,
-Sara Grandi
+COMPONENTS: Alessia Sini, Alice Zuddas,Sara Grandi
+TOPIC: 
