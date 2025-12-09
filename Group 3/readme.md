@@ -1,3 +1,3 @@
-Alessia Sini,
+Alessia Sini
 Alice Zuddas,
 Sara Grandi
