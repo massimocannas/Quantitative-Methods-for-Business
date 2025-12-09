@@ -1,3 +1,1 @@
-Flora Antal
-Adam Balogh
-Hubert Stelmasiak
+Flora Antal, Adam Balogh and Hubert Stelmasiak
