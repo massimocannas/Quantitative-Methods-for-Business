@@ -1,4 +1,5 @@
 Flora Antal, Adam Balogh and Hubert Stelmasiak
+
 <br>Our topic:  Choosing the Best Study Method for QM test
 
 
