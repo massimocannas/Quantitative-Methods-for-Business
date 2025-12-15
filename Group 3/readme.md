@@ -1,3 +1,3 @@
-COMPONENTS: Alessia Sini, Alice Zuddas, Sara Grandi
+COMPONENTS: Alessia a. Sini, Alice Zuddas, Sara m. Grandi
 
-TOPIC: Case Study 19.2-5 from Hillier (page 864) related to Markov Chain processes and MDP applied to tennis case
+TOPIC: Markov Chain and MDP related to Summer Holiday rental agency. The aim is to decide which policy apply (e-mail, call or depliant) in order to increase customer retention and maximize long-term expected revenue.
