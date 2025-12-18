@@ -12,7 +12,7 @@ README.md — Main README with instructions (the file you are reading now!)
 
 - group1/ - Group 1 folder
   - README.md — Project1 README (must contain the list of group participants and a brief presentation of the project: data, objective, technique and references)
-  - data — A data file (.csv, .Rdata, etc.)
+  - data — A data file (.csv, .Rdata, etc.). ** Please do not share data with personal details **
   - script.R — R code for the analysis
   - slide.pdf — Project slides (with a uniform and simple background)
 
