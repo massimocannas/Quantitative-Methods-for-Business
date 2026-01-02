@@ -1,5 +1,5 @@
 ############################################
-# QM PROJECT – DATASET
+# QM PROJECT – DATASET GENERATION (FINAL)
 ############################################
 
 # 1. Clean environment and set seed
@@ -9,9 +9,9 @@ set.seed(123)
 ############################################
 # 2. GENERAL PARAMETERS
 ############################################
-n_students <- 100
-n_exams <- 10
+n_exams     <- 10
 n_seminars <- 4
+n_students <- 100
 
 ############################################
 # 3. ACTIVITIES
@@ -24,68 +24,57 @@ activity <- c(
 ############################################
 # 4. CFU STRUCTURE
 ############################################
-# Exams: 6, 9, and 12 CFU
-cfu_exams <- c(6,6,6,9,6,6,9,9,9,12)
-
-# Seminars: 2 or 3 CFU
+cfu_exams     <- c(6,6,6,9,6,6,9,9,9,12)
 cfu_seminars <- c(2,3,2,3)
-
 cfu <- c(cfu_exams, cfu_seminars)
 
 ############################################
 # 5. SEMESTER DISTRIBUTION
 ############################################
 semester <- c(
-  # Exams
-  "S1","S1","S1","S1",          # 3x6 CFU + 1x9 CFU
-  "S2","S2","S2","S2","S2","S2", # remaining exams incl. 12 CFU
-  # Seminars
-  "S1","S1","S2","S2"
+  "S1","S1","S1","S1",              # exams S1
+  "S2","S2","S2","S2","S2","S2",     # exams S2
+  "S1","S1","S2","S2"                # seminars
 )
 
 ############################################
-# 6. SIMULATE STUDENT PERFORMANCE (UNCERTAINTY)
+# 6. TYPE
 ############################################
-# Generate grades for 100 students per exam
-exam_scores <- lapply(1:n_exams, function(i) {
-  round(rnorm(
-    n_students,
-    mean = sample(22:28, 1),
-    sd = 3
-  ))
-})
-
-exam_scores_df <- as.data.frame(exam_scores)
-colnames(exam_scores_df) <- paste0("Exam_", 1:n_exams)
-
-# Truncate grades between 18 and 30
-exam_scores_df <- pmin(pmax(exam_scores_df, 18), 30)
+type <- ifelse(cfu >= 6, "Exam", "Seminar")
 
 ############################################
-# 7. EXAM STATISTICS
+# 7. UNCERTAINTY: PROBABILITY OF PASSING
 ############################################
-mean_grade <- sapply(exam_scores_df, mean)
-p_pass <- sapply(exam_scores_df, function(x) mean(x >= 18))
+# Exams: uncertain probability (Beta distribution)
+p_pass_exams <- rbeta(n_exams, shape1 = 5, shape2 = 3)
+
+# Seminars: always passed
+p_pass_seminars <- rep(1, n_seminars)
+
+p_pass <- c(p_pass_exams, p_pass_seminars)
 
 ############################################
-# 8. ASSIGN GRADES AND PROBABILITIES
+# 8. CONDITIONAL GRADES (IF PASSED)
 ############################################
-grade <- c(round(mean_grade, 1), rep(NA, n_seminars))
-p_pass_all <- c(round(p_pass, 3), rep(1, n_seminars))  # seminars always pass
+# Expected grade conditional on passing
+grade_exams <- round(rnorm(n_exams, mean = 26, sd = 2))
+grade_exams <- pmin(pmax(grade_exams, 18), 30)
+
+grade <- c(grade_exams, rep(NA, n_seminars))
 
 ############################################
 # 9. TIME REQUIREMENTS
 ############################################
-# Lecture hours: 6 per CFU for exams
-lecture_hours_exams <- cfu_exams * 6
+# Lecture hours
+lecture_hours_exams     <- cfu_exams * 6
 lecture_hours_seminars <- rep(0, n_seminars)
 lecture_hours <- c(lecture_hours_exams, lecture_hours_seminars)
 
-# Study hours (random)
-study_hours_exams <- sample(40:80, n_exams, replace = TRUE)
+# Study hours
+study_hours_exams     <- sample(40:80, n_exams, replace = TRUE)
 study_hours_seminars <- sample(10:25, n_seminars, replace = TRUE)
 
-# Special case: 12 CFU exam requires 150 total hours
+# Special case: 12 CFU exam → 150 total hours
 idx_12cfu <- which(cfu_exams == 12)
 study_hours_exams[idx_12cfu] <- 150 - lecture_hours_exams[idx_12cfu]
 
@@ -102,7 +91,7 @@ total_time <- lecture_hours + study_hours
 expected_grade <- ifelse(
   is.na(grade),
   0,
-  grade * p_pass_all
+  grade * p_pass
 )
 
 ############################################
@@ -111,20 +100,15 @@ expected_grade <- ifelse(
 efficiency <- (expected_grade * cfu) / total_time
 
 ############################################
-# 13. TYPE VARIABLE
-############################################
-type <- ifelse(cfu >= 6, "Exam", "Seminar")
-
-############################################
-# 14. FINAL DATASET
+# 13. FINAL DATASET
 ############################################
 data <- data.frame(
   activity,
+  type,
   cfu,
   semester,
-  type,
   grade,
-  p_pass = p_pass_all,
+  p_pass,
   lecture_hours,
   study_hours,
   total_time,
@@ -133,10 +117,12 @@ data <- data.frame(
 )
 
 ############################################
-# 15. SAVE DATASET
+# 14. SAVE DATASET
 ############################################
-if(!dir.exists("data")) dir.create("data")
-save(data, exam_scores_df, file = "data/data.Rdata")
+if (!dir.exists("data")) dir.create("data")
+save(data, file = "data/data.Rdata")
 
-# Visualize simulated student grades
-View(exam_scores_df)
+############################################
+# 15. CHECK
+############################################
+View(data)
