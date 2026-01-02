@@ -9,18 +9,21 @@ set.seed(123)
 ### 2. LOAD LIBRARIES
 library(ggplot2)
 
+############################################
 ### 3. LOAD DATA
+############################################
+
 load("data/data.Rdata")
 
-# Quick check
-str(data)
+# Sanity check
+stopifnot(exists("data"))
 
 ############################################
 ### 4. DATA PREPARATION
 ############################################
 
 # Separate exams and seminars
-exams <- subset(data, type == "Exam")
+exams     <- subset(data, type == "Exam")
 seminars <- subset(data, type == "Seminar")
 
 ############################################
@@ -55,7 +58,7 @@ hist_plot <- ggplot(exams, aes(x = p_pass)) +
   ) +
   theme_minimal()
 
-print(hist_plot)
+print(hist_plot)   # <-- FONDAMENTALE
 
 ############################################
 ### 7. EXPECTED PERFORMANCE
@@ -79,7 +82,7 @@ scatter_plot <- ggplot(
   ) +
   theme_minimal()
 
-print(scatter_plot)
+print(scatter_plot)   # <-- FONDAMENTALE
 
 ############################################
 ### 8. EFFICIENCY ANALYSIS
@@ -105,7 +108,7 @@ eff_plot <- ggplot(
   ) +
   theme_minimal()
 
-print(eff_plot)
+print(eff_plot)   # <-- FONDAMENTALE
 
 ############################################
 ### 9. SEMESTER COMPARISON
@@ -126,4 +129,4 @@ semester_plot <- ggplot(
   ) +
   theme_minimal()
 
-print(semester_plot)
+print(semester_plot)   # <-- FONDAMENTALE
