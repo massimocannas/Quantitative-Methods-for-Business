@@ -1,5 +1,5 @@
 ############################################
-# QM PROJECT – DATASET GENERATION (FINAL)
+# QM PROJECT – DATASET GENERATION
 ############################################
 
 # 1. Clean environment and set seed
