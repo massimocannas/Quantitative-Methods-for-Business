@@ -3,6 +3,7 @@ Daniele Tonarelli;
 Andrea Dessalvi.
 
 
+
 _**Project Overview**_  
 The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
 The project follows a two-step methodological approach, as required by the course:
@@ -12,6 +13,7 @@ The project follows a two-step methodological approach, as required by the cours
 
 _The R scripts provided focus on data generation and descriptive analysis, while the optimization model is presented at a conceptual level._
 
+
   
 _**Deterministic Optimization Model (Baseline)**_  
 As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
@@ -20,17 +22,20 @@ Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text
 
 Where each activity corresponds to either an exam or a seminar.
 
+
   
 **_Assumption_**  
 In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
 
 [p_i = 1 \quad \forall i]
 
+
   
 **_Objective Function_**  
 The objective is to maximize the total academic performance:
 
 [\max \sum_i \text{grade}_i \cdot x_i]
+
 
   
 **_Constraints_**
@@ -42,6 +47,7 @@ The objective is to maximize the total academic performance:
 3. _Binary constraints_:[x_i \in {0,1}]
 
 _This formulation represents the standard linear programming model requested as a starting point._
+
 
 
 _**Stochastic Extension of the Model**_  
@@ -62,13 +68,14 @@ This expected-value formulation captures the trade-off between high grades and t
 _**Dataset Description (data.R)**_  
 The dataset is generated via simulation and contains one observation per activity (exam or seminar).
 
+
 **Main Variables**
 
-1. Activity: activity identifier
-2. Type: Exam or Seminar
-3. CFU: number of credits
-4. Semester: semester in which the activity is offered
-5. Grade: grade conditional on passing (exams only)
+1. activity: activity identifier
+2. type: Exam or Seminar
+3. cfu: number of credits
+4. semester: semester in which the activity is offered
+5. grade: grade conditional on passing (exams only)
 6. p_pass: probability of passing
 7. lecture_hours: scheduled lecture hours
 8. study_hours: individual study hours
@@ -76,9 +83,11 @@ The dataset is generated via simulation and contains one observation per activit
 10. expected_grade: expected academic outcome
 11. efficiency: expected grade per hour invested
 12. Note on CFU Values
-  
+
+
 Although the initial project description refers to standard CFU values (6 for exams and 3 for seminars), the simulated dataset includes heterogeneous CFU values (6, 9, 12 for exams and 2–3 for seminars).
 This choice reflects realistic variability across university courses and directly affects the formulation of credit and time constraints in the optimization problem.
+
 
   
 _**Analysis Script (script.R)**_
@@ -96,6 +105,8 @@ The script produces the following plots:
 2. Scatter plot of expected grade vs probability of passing
 3. Bar chart of exam efficiency
 4. Boxplot of efficiency by semester
+
+
 
 _**Conclusion**_  
 The project provides a clear methodological progression from a deterministic optimization model to a stochastic formulation that incorporates uncertainty.
