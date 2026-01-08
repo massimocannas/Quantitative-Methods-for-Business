@@ -18,11 +18,28 @@ As a first step, we consider a deterministic version of the problem, assuming th
 
 Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text{otherwise}\end{cases}]
 
+Where each activity corresponds to either an exam or a seminar.
 
+_Assumption_
+In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
 
+[p_i = 1 \quad \forall i]
 
+_Objective Function_
 
+The objective is to maximize the total academic performance:
 
+[\max \sum_i \text{grade}_i \cdot x_i]
+
+_Constraints_
+
+1. Credit constraint:[\sum_i \text{CFU}i \cdot x_i \geq \text{CFU}{\min}]
+
+2. Time constraint:[\sum_i \text{time}i \cdot x_i \leq \text{Time}{\max}]
+
+3. Binary constraints:[x_i \in {0,1}]
+
+_This formulation represents the standard linear programming model requested as a starting point._
 
 
 
