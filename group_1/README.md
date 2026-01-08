@@ -22,21 +22,21 @@ Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text
 
 Where each activity corresponds to either an exam or a seminar.
 
-
+<br>
   
 **_Assumption_**  
 In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
 
 [p_i = 1 \quad \forall i]
 
-
+<br>
   
 **_Objective Function_**  
 The objective is to maximize the total academic performance:
 
 [\max \sum_i \text{grade}_i \cdot x_i]
 
-
+<br>
   
 **_Constraints_**
 
@@ -48,7 +48,7 @@ The objective is to maximize the total academic performance:
 
 _This formulation represents the standard linear programming model requested as a starting point._
 
-
+<br>
 
 _**Stochastic Extension of the Model**_  
 After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing (p_i \in (0,1]), while seminars are assumed to be always passed.
@@ -64,6 +64,7 @@ The objective function becomes:
 
 This expected-value formulation captures the trade-off between high grades and the risk of failing an exam.
 
+<br>
   
 _**Dataset Description (data.R)**_  
 The dataset is generated via simulation and contains one observation per activity (exam or seminar).
@@ -88,7 +89,7 @@ The dataset is generated via simulation and contains one observation per activit
 Although the initial project description refers to standard CFU values (6 for exams and 3 for seminars), the simulated dataset includes heterogeneous CFU values (6, 9, 12 for exams and 2–3 for seminars).
 This choice reflects realistic variability across university courses and directly affects the formulation of credit and time constraints in the optimization problem.
 
-
+<br>
   
 _**Analysis Script (script.R)**_
   
@@ -106,7 +107,7 @@ The script produces the following plots:
 3. Bar chart of exam efficiency
 4. Boxplot of efficiency by semester
 
-
+<br>
 
 _**Conclusion**_  
 The project provides a clear methodological progression from a deterministic optimization model to a stochastic formulation that incorporates uncertainty.
