@@ -12,7 +12,7 @@ The project follows a two-step methodological approach, as required by the cours
 
 _The R scripts provided focus on data generation and descriptive analysis, while the optimization model is presented at a conceptual level._
 
-
+  
 _**Deterministic Optimization Model (Baseline)**_  
 As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
 
@@ -20,20 +20,19 @@ Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text
 
 Where each activity corresponds to either an exam or a seminar.
 
-
+  
 **_Assumption_**  
 In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
 
 [p_i = 1 \quad \forall i]
 
-
-**_Objective Function_**
-
+  
+**_Objective Function_**  
 The objective is to maximize the total academic performance:
 
 [\max \sum_i \text{grade}_i \cdot x_i]
 
-
+  
 **_Constraints_**
 
 1. _Credit constraint_:[\sum_i \text{CFU}i \cdot x_i \geq \text{CFU}{\min}]
@@ -45,85 +44,64 @@ The objective is to maximize the total academic performance:
 _This formulation represents the standard linear programming model requested as a starting point._
 
 
-_**Stochastic Extension of the Model**_
+_**Stochastic Extension of the Model**_  
 After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing (p_i \in (0,1]), while seminars are assumed to be always passed.
 
-
+  
 The expected grade for each activity is therefore defined as:
 
 [\mathbb{E}[\text{grade}_i] = p_i \cdot \text{grade}_i]
 
 The objective function becomes:
-
-[
-\max \sum_i p_i \cdot \text{grade}_i \cdot x_i
-]
+  
+[\max \sum_i p_i \cdot \text{grade}_i \cdot x_i]
 
 This expected-value formulation captures the trade-off between high grades and the risk of failing an exam.
 
-4. Dataset Description (data.R)
-
+  
+_**Dataset Description (data.R)**_  
 The dataset is generated via simulation and contains one observation per activity (exam or seminar).
 
-Main Variables
+**Main Variables**
 
-activity: activity identifier
-
-type: Exam or Seminar
-
-cfu: number of credits
-
-semester: semester in which the activity is offered
-
-grade: grade conditional on passing (exams only)
-
-p_pass: probability of passing
-
-lecture_hours: scheduled lecture hours
-
-study_hours: individual study hours
-
-total_time: total time required
-
-expected_grade: expected academic outcome
-
-efficiency: expected grade per hour invested
-
-Note on CFU Values
-
+1. Activity: activity identifier
+2. Type: Exam or Seminar
+3. CFU: number of credits
+4. Semester: semester in which the activity is offered
+5. Grade: grade conditional on passing (exams only)
+6. p_pass: probability of passing
+7. lecture_hours: scheduled lecture hours
+8. study_hours: individual study hours
+9. total_time: total time required
+10. expected_grade: expected academic outcome
+11. efficiency: expected grade per hour invested
+12. Note on CFU Values
+  
 Although the initial project description refers to standard CFU values (6 for exams and 3 for seminars), the simulated dataset includes heterogeneous CFU values (6, 9, 12 for exams and 2–3 for seminars).
 This choice reflects realistic variability across university courses and directly affects the formulation of credit and time constraints in the optimization problem.
 
-5. Analysis Script (script.R)
+  
+_**Analysis Script (script.R)**_
+  
+The analysis script performs:  
+1. Descriptive statistics for exams and seminars
+2. Visualization of uncertainty in passing probabilities
+3. Analysis of expected academic performance
+4. Efficiency comparisons across exams
+5. Comparison of efficiency distributions by semester
 
-The analysis script performs:
 
-Descriptive statistics for exams and seminars
+The script produces the following plots:  
+1. Histogram of probabilities of passing exams
+2. Scatter plot of expected grade vs probability of passing
+3. Bar chart of exam efficiency
+4. Boxplot of efficiency by semester
 
-Visualization of uncertainty in passing probabilities
-
-Analysis of expected academic performance
-
-Efficiency comparisons across exams
-
-Comparison of efficiency distributions by semester
-
-The script produces the following plots:
-
-Histogram of probabilities of passing exams
-
-Scatter plot of expected grade vs probability of passing
-
-Bar chart of exam efficiency
-
-Boxplot of efficiency by semester
-
-6. Conclusion
-
+_**Conclusion**_  
 The project provides a clear methodological progression from a deterministic optimization model to a stochastic formulation that incorporates uncertainty.
 The R implementation focuses on data simulation and exploratory analysis, while the optimization framework is defined explicitly in the README as required.
 
-This structure ensures conceptual clarity, methodological correctness, and consistency between theory and empirical analysis.
+_This structure ensures conceptual clarity, methodological correctness, and consistency between theory and empirical analysis._
 
 Comment: Interesting. You need to figure out how to include the probability of passing. As a first step, I suggest you to assume that the probability of passing is 1 and write the problem in standard form. Then you will generalize it. You can write pretty math here in the read me: just put the equation between the dollar sign and use simple formatting, as in this example: $x_1 + 2x_2  \le 3$ 
 
