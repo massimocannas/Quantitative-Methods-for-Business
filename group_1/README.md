@@ -4,7 +4,6 @@ Andrea Dessalvi.
 
 
 _**Project Overview**_
-
 The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
 The project follows a two-step methodological approach, as required by the course:
 
@@ -12,6 +11,19 @@ The project follows a two-step methodological approach, as required by the cours
 2. Extension of the model to a stochastic setting, introducing uncertainty in the probability of passing exams.
 
 _The R scripts provided focus on data generation and descriptive analysis, while the optimization model is presented at a conceptual level._
+
+
+_**Deterministic Optimization Model (Baseline)**_
+As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
+
+Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text{otherwise}\end{cases}]
+
+
+
+
+
+
+
 
 
 Comment: Interesting. You need to figure out how to include the probability of passing. As a first step, I suggest you to assume that the probability of passing is 1 and write the problem in standard form. Then you will generalize it. You can write pretty math here in the read me: just put the equation between the dollar sign and use simple formatting, as in this example: $x_1 + 2x_2  \le 3$ 
