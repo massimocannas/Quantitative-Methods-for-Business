@@ -3,8 +3,9 @@ Daniele Tonarelli;
 Andrea Dessalvi.
 
 
-**_Project Overview_
-**The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
+_**Project Overview
+**_
+The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
 The project follows a two-step methodological approach, as required by the course:
 
 1. Formulation of a deterministic optimization model, assuming certainty in exam outcomes.
