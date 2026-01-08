@@ -12,4 +12,5 @@ Matteo Comment: The project is interesting, but the core methodological step is 
 1) define the binary decision variables for exam and seminar selection,
 2) specify the objective function in deterministic form,
 3) include credit and time constraints for the two students,
+
 Only afterwards generalize the model by reintroducing the probability of passing (e.g., through expected grades or risk constraints).
