@@ -22,6 +22,7 @@ Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text
 
 Where each activity corresponds to either an exam or a seminar.
 
+
 **_Assumption_**
 
 In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
@@ -45,6 +46,10 @@ The objective is to maximize the total academic performance:
 3. _Binary constraints_:[x_i \in {0,1}]
 
 _This formulation represents the standard linear programming model requested as a starting point._
+
+
+_**Stochastic Extension of the Model**_
+After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing (p_i \in (0,1]), while seminars are assumed to be always passed.
 
 
 
