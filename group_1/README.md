@@ -3,7 +3,7 @@ Daniele Tonarelli;
 Andrea Dessalvi.
 
 
-<br>
+
 _**Project Overview**_  
 The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
 The project follows a two-step methodological approach, as required by the course:
@@ -13,7 +13,7 @@ The project follows a two-step methodological approach, as required by the cours
 
 _The R scripts provided focus on data generation and descriptive analysis, while the optimization model is presented at a conceptual level._
 
-
+<br>
   
 _**Deterministic Optimization Model (Baseline)**_  
 As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
