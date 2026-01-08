@@ -3,7 +3,15 @@ Daniele Tonarelli;
 Andrea Dessalvi.
 
 
-Brief presentation of Group Essay: The project applies linear programming techniques to formalize and solve an academic planning optimization problem. The model represents the decision process of two university students who must complete their degree requirements under distinct credit and time constraints.The first student is required to obtain 9 ECTS credits and graduate in the February session, while the second student must obtain 12 ECTS credits and graduate in the July session. The decision variables represent the selection of available exams to be taken by each student.Each exam is associated with three quantitative parameters: probability of passing, required preparation time, and expected grade. All exams are worth 6 credits, while seminars, worth 3 credits, are included as auxiliary options; seminars are excluded from the objective function since they are ungraded and do not depend on the decision variables. The optimization problem is subject to credit completion constraints and graduation deadline constraints, and aims to determine the optimal combination of exams (and seminars, if needed) that maximizes academic performance while minimizing preparation effort and risk of failure.
+**_Project Overview_
+**The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
+The project follows a two-step methodological approach, as required by the course:
+
+1. Formulation of a deterministic optimization model, assuming certainty in exam outcomes.
+2. Extension of the model to a stochastic setting, introducing uncertainty in the probability of passing exams.
+
+_The R scripts provided focus on data generation and descriptive analysis, while the optimization model is presented at a conceptual level._
+
 
 Comment: Interesting. You need to figure out how to include the probability of passing. As a first step, I suggest you to assume that the probability of passing is 1 and write the problem in standard form. Then you will generalize it. You can write pretty math here in the read me: just put the equation between the dollar sign and use simple formatting, as in this example: $x_1 + 2x_2  \le 3$ 
 
