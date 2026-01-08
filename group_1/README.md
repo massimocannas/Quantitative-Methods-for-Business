@@ -3,8 +3,7 @@ Daniele Tonarelli;
 Andrea Dessalvi.
 
 
-_**Project Overview**_
-
+_**Project Overview**_  
 The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
 The project follows a two-step methodological approach, as required by the course:
 
@@ -14,8 +13,7 @@ The project follows a two-step methodological approach, as required by the cours
 _The R scripts provided focus on data generation and descriptive analysis, while the optimization model is presented at a conceptual level._
 
 
-_**Deterministic Optimization Model (Baseline)**_
-
+_**Deterministic Optimization Model (Baseline)**_  
 As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
 
 Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text{otherwise}\end{cases}]
@@ -23,8 +21,7 @@ Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text
 Where each activity corresponds to either an exam or a seminar.
 
 
-**_Assumption_**
-
+**_Assumption_**  
 In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
 
 [p_i = 1 \quad \forall i]
@@ -52,6 +49,81 @@ _**Stochastic Extension of the Model**_
 After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing (p_i \in (0,1]), while seminars are assumed to be always passed.
 
 
+The expected grade for each activity is therefore defined as:
+
+[\mathbb{E}[\text{grade}_i] = p_i \cdot \text{grade}_i]
+
+The objective function becomes:
+
+[
+\max \sum_i p_i \cdot \text{grade}_i \cdot x_i
+]
+
+This expected-value formulation captures the trade-off between high grades and the risk of failing an exam.
+
+4. Dataset Description (data.R)
+
+The dataset is generated via simulation and contains one observation per activity (exam or seminar).
+
+Main Variables
+
+activity: activity identifier
+
+type: Exam or Seminar
+
+cfu: number of credits
+
+semester: semester in which the activity is offered
+
+grade: grade conditional on passing (exams only)
+
+p_pass: probability of passing
+
+lecture_hours: scheduled lecture hours
+
+study_hours: individual study hours
+
+total_time: total time required
+
+expected_grade: expected academic outcome
+
+efficiency: expected grade per hour invested
+
+Note on CFU Values
+
+Although the initial project description refers to standard CFU values (6 for exams and 3 for seminars), the simulated dataset includes heterogeneous CFU values (6, 9, 12 for exams and 2–3 for seminars).
+This choice reflects realistic variability across university courses and directly affects the formulation of credit and time constraints in the optimization problem.
+
+5. Analysis Script (script.R)
+
+The analysis script performs:
+
+Descriptive statistics for exams and seminars
+
+Visualization of uncertainty in passing probabilities
+
+Analysis of expected academic performance
+
+Efficiency comparisons across exams
+
+Comparison of efficiency distributions by semester
+
+The script produces the following plots:
+
+Histogram of probabilities of passing exams
+
+Scatter plot of expected grade vs probability of passing
+
+Bar chart of exam efficiency
+
+Boxplot of efficiency by semester
+
+6. Conclusion
+
+The project provides a clear methodological progression from a deterministic optimization model to a stochastic formulation that incorporates uncertainty.
+The R implementation focuses on data simulation and exploratory analysis, while the optimization framework is defined explicitly in the README as required.
+
+This structure ensures conceptual clarity, methodological correctness, and consistency between theory and empirical analysis.
 
 Comment: Interesting. You need to figure out how to include the probability of passing. As a first step, I suggest you to assume that the probability of passing is 1 and write the problem in standard form. Then you will generalize it. You can write pretty math here in the read me: just put the equation between the dollar sign and use simple formatting, as in this example: $x_1 + 2x_2  \le 3$ 
 
