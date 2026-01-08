@@ -6,7 +6,7 @@ Andrea Dessalvi.
 
 _**Project Overview**_  
 The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
-The project follows a two-step methodological approach, as required by the course:
+The project follows a two-step methodological approach:
 
 1. Formulation of a deterministic optimization model, assuming certainty in exam outcomes.
 2. Extension of the model to a stochastic setting, introducing uncertainty in the probability of passing exams.
@@ -53,7 +53,7 @@ _This formulation represents the standard linear programming model requested as 
 _**Stochastic Extension of the Model**_  
 After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing (p_i \in (0,1]), while seminars are assumed to be always passed.
 
-  
+
 The expected grade for each activity is therefore defined as:
 
 [\mathbb{E}[\text{grade}_i] = p_i \cdot \text{grade}_i]
@@ -86,7 +86,7 @@ The dataset is generated via simulation and contains one observation per activit
 12. Note on CFU Values
 
 
-Although the initial project description refers to standard CFU values (6 for exams and 3 for seminars), the simulated dataset includes heterogeneous CFU values (6, 9, 12 for exams and 2–3 for seminars).
+The simulated dataset includes heterogeneous CFU values (6, 9, 12 for exams and 2–3 for seminars).
 This choice reflects realistic variability across university courses and directly affects the formulation of credit and time constraints in the optimization problem.
 
 <br>
