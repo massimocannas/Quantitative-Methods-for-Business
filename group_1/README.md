@@ -1,8 +1,6 @@
 ## Group Members
 Jacopo Zoccheddu
-
 Daniele Tonarelli
-
 Andrea Dessalvi
 
 
