@@ -1,9 +1,13 @@
+# Quantitative Methods Project
+
+<br>
+
 ## Group Members
 Jacopo Zoccheddu  
 Daniele Tonarelli  
 Andrea Dessalvi
 
-
+<br>
 
 ## Project Overview
 The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
