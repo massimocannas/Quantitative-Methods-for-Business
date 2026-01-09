@@ -56,17 +56,20 @@ $$
 
 ## Constraints
 
-1. _Credit constraint_: 
+1. _Credit constraint_:
+
 $$
 \sum_i \text{CFU}_i \cdot x_i \ge \text{CFU}_{\min}
 $$
 
-2. _Time constraint_: 
+2. _Time constraint_:
+
 $$
 \sum_i \text{time}_i \cdot x_i \le \text{Time}_{\max}
 $$
 
-3. _Binary constraints_: 
+3. _Binary constraints_:
+
 $$
 x_i \in \{0,1\}, \quad \forall i
 $$
