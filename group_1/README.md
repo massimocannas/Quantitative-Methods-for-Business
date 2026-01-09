@@ -15,7 +15,7 @@ _The R scripts provided focus on data generation and descriptive analysis, while
 
 <br>
   
-_**Deterministic Optimization Model (Baseline)**_  
+## Deterministic Optimization Model (Baseline)
 As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
 
 Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text{otherwise}\end{cases}]
@@ -24,21 +24,21 @@ Where each activity corresponds to either an exam or a seminar.
 
 <br>
   
-**_Assumption_**  
+## Assumption 
 In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
 
 [p_i = 1 \quad \forall i]
 
 <br>
   
-**_Objective Function_**  
+## Objective Function
 The objective is to maximize the total academic performance:
 
 [\max \sum_i \text{grade}_i \cdot x_i]
 
 <br>
   
-**_Constraints_**
+## Constraints
 
 1. _Credit constraint_:[\sum_i \text{CFU}i \cdot x_i \geq \text{CFU}{\min}]
 
@@ -50,7 +50,7 @@ _This formulation represents the standard linear programming model requested as 
 
 <br>
 
-_**Stochastic Extension of the Model**_  
+## Stochastic Extension of the Model 
 After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing (p_i \in (0,1]), while seminars are assumed to be always passed.
 
 
@@ -66,7 +66,7 @@ This expected-value formulation captures the trade-off between high grades and t
 
 <br>
   
-_**Dataset Description (data.R)**_  
+## Dataset Description (data.R)
 The dataset is generated via simulation and contains one observation per activity (exam or seminar).
 
 
@@ -91,7 +91,7 @@ This choice reflects realistic variability across university courses and directl
 
 <br>
   
-_**Analysis Script (script.R)**_
+## Analysis Script (script.R)
   
 The analysis script performs:  
 1. Descriptive statistics for exams and seminars
@@ -109,7 +109,7 @@ The script produces the following plots:
 
 <br>
 
-_**Conclusion**_  
+## Conclusion
 The project provides a clear methodological progression from a deterministic optimization model to a stochastic formulation that incorporates uncertainty.
 The R implementation focuses on data simulation and exploratory analysis, while the optimization framework is defined explicitly in the README as required.
 
