@@ -68,8 +68,9 @@ $$
 
 3. _Binary constraints_: 
 $$
-x_i \in \{0,1\}
+x_i \in \{0,1\}, \quad \forall i
 $$
+
 
 _This formulation represents the standard linear programming model requested as a starting point._
 
