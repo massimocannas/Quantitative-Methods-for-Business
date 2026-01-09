@@ -1,6 +1,5 @@
 # Quantitative Methods Project
 
-<br>
 
 ## Group Members
 Jacopo Zoccheddu  
