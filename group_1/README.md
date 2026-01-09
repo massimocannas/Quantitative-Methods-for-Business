@@ -22,49 +22,73 @@ _The R scripts provided focus on data generation and descriptive analysis, while
 ## Deterministic Optimization Model (Baseline)
 As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
 
-Let: [x_i =\begin{cases}1 & \text{if activity } i \text{ is selected} \0 & \text{otherwise}\end{cases}]
+We define a binary decision variable for each activity $i$:
 
-Where each activity corresponds to either an exam or a seminar.
+$$
+x_i =
+\begin{cases}
+1 & \text{if activity } i \text{ is selected} \
+0 & \text{otherwise}
+\end{cases}
+$$
+
+Each activity corresponds either to an exam or to a seminar.
 
 <br>
   
-## Assumption 
+## Assumption
 In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
 
-[p_i = 1 \quad \forall i]
+$$
+p_i = 1 \quad \forall i
+$$
 
 <br>
-  
+
 ## Objective Function
 The objective is to maximize the total academic performance:
 
-[\max \sum_i \text{grade}_i \cdot x_i]
+$$
+\max \sum_i \text{grade}_i \cdot x_i
+$$
 
 <br>
-  
+
 ## Constraints
 
-1. _Credit constraint_:[\sum_i \text{CFU}i \cdot x_i \geq \text{CFU}{\min}]
+1. _Credit constraint_: 
+$$
+\sum_i \text{CFU}_i \cdot x_i \ge \text{CFU}_{\min}
+$$
 
-2. _Time constraint_:[\sum_i \text{time}i \cdot x_i \leq \text{Time}{\max}]
+2. _Time constraint_: 
+$$
+\sum_i \text{time}_i \cdot x_i \le \text{Time}_{\max}
+$$
 
-3. _Binary constraints_:[x_i \in {0,1}]
+3. _Binary constraints_: 
+$$
+x_i \in \{0,1\}
+$$
 
 _This formulation represents the standard linear programming model requested as a starting point._
 
 <br>
 
 ## Stochastic Extension of the Model 
-After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing (p_i \in (0,1]), while seminars are assumed to be always passed.
-
+After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing $p_i \in (0,1]$, while seminars are assumed to be always passed.
 
 The expected grade for each activity is therefore defined as:
 
-[\mathbb{E}[\text{grade}_i] = p_i \cdot \text{grade}_i]
+$$
+\mathbb{E}[\text{grade}_i] = p_i \cdot \text{grade}_i
+$$
 
 The objective function becomes:
-  
-[\max \sum_i p_i \cdot \text{grade}_i \cdot x_i]
+
+$$
+\max \sum_i p_i \cdot \text{grade}_i \cdot x_i
+$$
 
 This expected-value formulation captures the trade-off between high grades and the risk of failing an exam.
 
