@@ -1,6 +1,9 @@
-Jacopo Zoccheddu;
-Daniele Tonarelli;
-Andrea Dessalvi.
+## Group Members
+Jacopo Zoccheddu
+
+Daniele Tonarelli
+
+Andrea Dessalvi
 
 
 
