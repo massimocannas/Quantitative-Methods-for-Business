@@ -102,3 +102,4 @@ optimal_action <- names(which.max(results))
 
 cat("\nOptimal booking channel under the stated assumptions:",
     optimal_action, "\n")
+
