@@ -1,6 +1,14 @@
 COMPONENTS: Alessia A. Sini, Alice Zuddas, Sara M. Grandi
+Project Overview
 
-TOPIC: Markov Chain and MDP related to Summer Holiday rental agency. The aim is to decide which policy apply (e-mail, call or depliant) in order to increase customer retention and maximize long-term expected revenue.
+This project analyzes customer booking behavior for a set of holiday houses using stochastic models. Customers interacting with the agency can either complete a booking (*Stay*) or not (*No stay*). The agency can promote its properties through three alternative booking channels: **Dirette**, **Napoleon**, and **Sardegna Travel**.
+
+The project is developed in two main steps. First, a **Markov chain model** is used to provide a descriptive baseline analysis of the long-run behavior of customers under each booking channel. Transition probabilities are estimated from observed data, and steady-state distributions are computed to understand what happens in the long run when no active decision is taken.
+
+In the second step, the model is extended to a **Markov Decision Process (MDP)**. The three booking channels are interpreted as alternative actions available to the agency, each characterized by different customer dynamics and monetary costs. By combining customer retention and operational costs, the MDP framework allows the identification of the booking strategy that maximizes the long-run expected reward under the stated assumptions.
+
+The project aims to illustrate how stochastic models can support managerial decision-making by explicitly accounting for both customer behavior and economic trade-offs.
+
 
 * feedback:
 
