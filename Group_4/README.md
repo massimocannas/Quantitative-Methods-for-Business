@@ -10,7 +10,7 @@ We are students at the university and we need to make a decision about whether w
 •	Active recall: is a learning principle that requires you to intentionally challenge your brain to retrieve information from memory rather than passively reviewing it. By forcing yourself to answer a question or summarize a concept without looking at your notes, you strengthen neural pathways and significantly improve long-term retention. 
 
 •	Feynman technique: is a four-step mental model designed to help you learn a concept deeply by explaining it in the simplest possible terms
-(Choose a concept; Teach it to a child; Identify gaps; Review and simplify)
+(The 4 steps: Choose a concept; Teach it to a child; Identify gaps; Review and simplify)
 
 •	AI: Summarizing the studied topic, learning through podcasts, videos, graphs, etc. made by the artificial intelligence
 
