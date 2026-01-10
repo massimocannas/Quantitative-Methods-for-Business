@@ -15,8 +15,6 @@ The project follows a two-step methodological approach:
 1. Formulation of a deterministic optimization model, assuming certainty in exam outcomes.
 2. Extension of the model to a stochastic setting, introducing uncertainty in the probability of passing exams.
 
-_The R scripts provided focus on data generation and descriptive analysis, while the optimization model is presented at a conceptual level._
-
 <br>
   
 ## Deterministic Optimization Model (Baseline)
@@ -74,8 +72,6 @@ $$
 x_i \in \{0,1\}, \quad \forall i
 $$
 
-
-_This formulation represents the standard linear programming model requested as a starting point._
 
 <br>
 
@@ -145,7 +141,6 @@ The script produces the following plots:
 The project provides a clear methodological progression from a deterministic optimization model to a stochastic formulation that incorporates uncertainty.
 The R implementation focuses on data simulation and exploratory analysis, while the optimization framework is defined explicitly in the README as required.
 
-_This structure ensures conceptual clarity, methodological correctness, and consistency between theory and empirical analysis._
 
 <br>
 
