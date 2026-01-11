@@ -1,0 +1,113 @@
+############################################################
+# Decision tree visualization (DiagrammeR)
+# Paste this block at the VERY BOTTOM of your script
+# Then run it (select the block + Ctrl+Enter, or Source the whole file)
+############################################################
+
+# install.packages("DiagrammeR")  # uncomment if needed
+library(DiagrammeR)
+
+# Use the same parameters as your base case
+params <- get_base_params()
+
+# Helper to format outcome distributions
+fmt_dist <- function(p) {
+  sprintf("30: %.2f | 18-29: %.2f | 0-17: %.2f",
+          p["top30"], p["mid18_29"], p["fail"])
+}
+
+lab_1day_active <- fmt_dist(params$p_1day_active)
+lab_1day_ai     <- fmt_dist(params$p_1day_ai)
+lab_1day_feyn   <- fmt_dist(params$p_1day_feyn)
+
+lab_1week_active <- fmt_dist(params$p_1week_active)
+lab_1week_ai     <- fmt_dist(params$p_1week_ai)
+
+lab_1week_feyn_stick  <- fmt_dist(params$p_1week_feyn_stick)
+lab_1week_feyn_switch <- fmt_dist(params$p_1week_feyn_switch)
+
+# Optional: compute EMVs to show them on the nodes (based on your payoffs)
+emv_1day_active <- emv(params$p_1day_active, payoffs)
+emv_1day_ai     <- emv(params$p_1day_ai, payoffs)
+emv_1day_feyn   <- emv(params$p_1day_feyn, payoffs)
+
+emv_1week_active <- emv(params$p_1week_active, payoffs)
+emv_1week_ai     <- emv(params$p_1week_ai, payoffs)
+emv_feyn_stick   <- emv(params$p_1week_feyn_stick, payoffs)
+emv_feyn_switch  <- emv(params$p_1week_feyn_switch, payoffs)
+
+# Build and render the decision tree
+g <- grViz(sprintf("
+digraph decision_tree {
+  graph [rankdir=LR, splines=ortho]
+  node  [fontname=Helvetica, fontsize=11]
+  edge  [fontname=Helvetica, fontsize=10]
+
+  # Root decision
+  R [label='Start studying when?\\nDecision node', shape=box, style='rounded,filled', fillcolor=lightgray]
+
+  # Chance nodes: mental breakdown
+  D1 [label='1 day before\\nChance: breakdown?', shape=circle]
+  W1 [label='1 week before\\nChance: breakdown?', shape=circle]
+
+  # Decision nodes: method choice
+  M1 [label='Choose method (1 day)\\nDecision node', shape=box, style='rounded,filled', fillcolor=lightgray]
+  M2 [label='Choose method (1 week)\\nDecision node', shape=box, style='rounded,filled', fillcolor=lightgray]
+
+  # Sub-decision node if 1-week Feynman
+  Fsub [label='After 4 days (if Feynman)\\nDecision node', shape=box, style='rounded,filled', fillcolor=lightgray]
+
+  # Failure terminal nodes (breakdown implies poor outcome)
+  Lfail1 [label='Mental breakdown\\nOutcome: 0-17', shape=note]
+  Lfail2 [label='Mental breakdown\\nOutcome: 0-17', shape=note]
+
+  # Root connections
+  R -> D1 [label='Start 1 day before']
+  R -> W1 [label='Start 1 week before']
+
+  # Breakdown chance connections
+  D1 -> Lfail1 [label='breakdown %.2f']
+  D1 -> M1     [label='no breakdown %.2f']
+
+  W1 -> Lfail2 [label='breakdown %.2f']
+  W1 -> M2     [label='no breakdown %.2f']
+
+  # 1-day method leaves
+  A1  [label='Active Recall\\n%s\\nEMV=%.2f', shape=note]
+  AI1 [label='AI\\n%s\\nEMV=%.2f', shape=note]
+  F1  [label='Feynman\\n%s\\nEMV=%.2f', shape=note]
+
+  M1 -> A1  [label='Active Recall']
+  M1 -> AI1 [label='AI']
+  M1 -> F1  [label='Feynman']
+
+  # 1-week method leaves
+  A2  [label='Active Recall\\n%s\\nEMV=%.2f', shape=note]
+  AI2 [label='AI\\n%s\\nEMV=%.2f', shape=note]
+  F2  [label='Feynman\\n(then decide)', shape=note]
+
+  M2 -> A2   [label='Active Recall']
+  M2 -> AI2  [label='AI']
+  M2 -> Fsub [label='Feynman']
+
+  # 1-week Feynman sub-decision leaves
+  FS [label='Stick with Feynman\\n%s\\nEMV=%.2f', shape=note]
+  FW [label='Switch to Active Recall\\n%s\\nEMV=%.2f', shape=note]
+
+  Fsub -> FS [label='Stick']
+  Fsub -> FW [label='Switch']
+}
+",
+params$p_break_1day, 1 - params$p_break_1day,
+params$p_break_1week, 1 - params$p_break_1week,
+lab_1day_active, emv_1day_active,
+lab_1day_ai, emv_1day_ai,
+lab_1day_feyn, emv_1day_feyn,
+lab_1week_active, emv_1week_active,
+lab_1week_ai, emv_1week_ai,
+lab_1week_feyn_stick, emv_feyn_stick,
+lab_1week_feyn_switch, emv_feyn_switch
+))
+
+# Important: print() is required when running via Source()
+print(g)
