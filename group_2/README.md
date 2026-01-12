@@ -36,6 +36,6 @@ The optimization problem is solved using R, with the support of the `lpSolve` pa
 ## Tools
 - R
 - lpSolve
-  
+ Comment: can you add (either in the readme or in the R file) the standard form of the linear programming problem?  
 ## References
 - Course slides
