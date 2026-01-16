@@ -1,4 +1,5 @@
 Project Overview
+
 The objective of this project is to analyse and optimise a transportation decision problem using linear programming. The problem concerns the allocation of shipments from multiple supply locations to multiple demand locations in order to minimise total transportation cost, subject to operational constraints.
 
 The project follows a two-step methodological approach, in line with the course requirements:
@@ -28,6 +29,7 @@ Supply and demand levels are fixed and known with certainty.
 Under these assumptions, the problem can be formulated as a standard linear programming transportation model.
 
 Objective Function
+
 The objective is to minimise total transportation cost:
 
 [ \min \sum_{i=1}^{I} \sum_{j=1}^{J} c_{ij} , x_{ij} ]
@@ -72,6 +74,7 @@ capacity restrictions on specific routes.
 These extensions allow the decision-maker to evaluate how sensitive the optimal transportation plan is to changes in key parameters, while preserving the linear programming structure.
 
 Data Description
+
 The model uses real data provided for the project, including:
 
 supply capacities at each origin node,
@@ -80,5 +83,6 @@ unit transportation costs for each route.
 The total supply equals total demand, resulting in a balanced transportation problem, which is well suited for linear programming analysis.
 
 Methodology
+
 The problem is solved using linear programming, specifically the transportation problem framework, which is a structured special case of LP. The model is implemented using standard optimization tools and solved with the Simplex method.
 
