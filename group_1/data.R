@@ -39,7 +39,8 @@ exam_scores <- lapply(1:n_exams, function(i) {
   ability <- rnorm(
     n_students,
     mean = runif(1, 20, 26),   # difficulty varies by exam
-    sd   = runif(1, 4, 6)
+    sd   = runif(1, 4, 6) 
+    # comment: it is not clear why variability also increases with grades; overall the grade simulation is quite unrealistics
   )
   
   # Observed exam outcome
