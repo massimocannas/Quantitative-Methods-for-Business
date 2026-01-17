@@ -139,6 +139,20 @@ The file script.R loads the dataset, performs descriptive analysis and visualiza
 
 The entire project is fully reproducible by running the data generation script first and then the analysis script.
 
+## Conclusions
+
+This project shows how a realistic academic planning problem can be formalized using linear programming techniques.
+Starting from a simple and intuitive decision context, the problem is first expressed in a deterministic framework, where all selected exams are assumed to be passed with certainty.
+This formulation allows the identification of an optimal selection of activities under credit and time constraints.
+
+The model is then extended to account for uncertainty in exam outcomes by introducing probabilities of passing and expected grades.
+This stochastic formulation highlights the trade-off between high nominal grades and the risk of failing exams, and shows how uncertainty can substantially affect optimal decisions.
+In this context, seminars play an important role by providing credits with certainty, even though they do not contribute directly to academic performance.
+
+From a methodological perspective, the project illustrates how deterministic and stochastic optimization models can be built within a unified framework, using the same constraints and decision variables while modifying only the objective function.
+The R implementation demonstrates how simulated data, descriptive analysis, and optimization can be combined in a transparent and reproducible way.
+
+Overall, the project emphasizes the importance of formal modeling in decision-making under constraints and uncertainty, and provides a clear example of how quantitative methods can be applied to practical academic planning problems.
 
 
 	​
