@@ -8,142 +8,256 @@ Andrea Dessalvi
 
 <br>
 
-## Project Overview
-The objective of this project is to support a student in selecting a subset of exams and seminars in order to maximize academic performance, subject to constraints on available study time and required academic credits (CFU).
-The project follows a two-step methodological approach:
 
-1. Formulation of a deterministic optimization model, assuming certainty in exam outcomes.
-2. Extension of the model to a stochastic setting, introducing uncertainty in the probability of passing exams.
+Project overview
 
-<br>
-  
-## Deterministic Optimization Model (Baseline)
-As a first step, we consider a deterministic version of the problem, assuming that all selected exams are passed with certainty.
+This project addresses a linear programming decision problem in an academic context.
+The goal is to model how a student selects a subset of academic activities (exams and seminars) in order to graduate, subject to constraints on credits (CFU) and time availability, while maximizing academic performance.
 
-We define a binary decision variable for each activity $i$:
+The exercise is implemented entirely in R and is structured so that the instructor can fully inspect and reproduce the results.
 
-$$
-x_i =
-\begin{cases}
-1 & \text{if activity } i \text{ is selected} \
-0 & \text{otherwise}
-\end{cases}
-$$
+Structure of the repository
 
-Each activity corresponds either to an exam or to a seminar.
+The repository contains three essential files:
 
-<br>
-  
-## Assumption
-In the baseline model, the probability of passing is assumed to be equal to 1 for all activities:
+data.R
+Generates a realistic dataset with uncertainty, based on simulated student outcomes.
 
-$$
-p_i = 1 \quad \forall i
-$$
+script.R
+Performs descriptive analysis, visualization, and solves the optimization problem using linear programming.
 
-<br>
+README.md
+Explains the modeling choices, the data generation process, and the optimization logic.
 
-## Objective Function
-The objective is to maximize the total academic performance:
+Description of the academic environment
+Available activities
 
-$$
-\max \sum_i \text{grade}_i \cdot x_i
-$$
+There are 14 academic activities in total:
 
-<br>
+Exams (10)
 
-## Constraints
+Each exam:
 
-1. _Credit constraint_:
+provides CFU,
 
-$$
-\sum_i \text{CFU}_i \cdot x_i \ge \text{CFU}_{\min}
-$$
+has an associated grade (between 18 and 30),
 
-2. _Time constraint_:
+has a probability of passing,
 
-$$
-\sum_i \text{time}_i \cdot x_i \le \text{Time}_{\max}
-$$
+requires lecture hours and personal study time.
 
-3. _Binary constraints_:
+Semester distribution
 
-$$
-x_i \in \{0,1\}, \quad \forall i
-$$
+First semester (S1):
 
+Exam 1: 6 CFU
 
-<br>
+Exam 2: 6 CFU
 
-## Stochastic Extension of the Model 
-After defining the deterministic model, uncertainty is introduced by allowing the probability of passing exams to be lower than one. Each exam is associated with a probability of passing $p_i \in (0,1]$, while seminars are assumed to be always passed.
+Exam 3: 6 CFU
 
-The expected grade for each activity is therefore defined as:
+Exam 4: 9 CFU
 
-$$
-\mathbb{E}[\text{grade}_i] = p_i \cdot \text{grade}_i
-$$
+Second semester (S2):
 
-The objective function becomes:
+Exam 5: 6 CFU
 
-$$
-\max \sum_i p_i \cdot \text{grade}_i \cdot x_i
-$$
+Exam 6: 6 CFU
 
-This expected-value formulation captures the trade-off between high grades and the risk of failing an exam.
+Exam 7: 9 CFU
 
-<br>
-  
-## Dataset Description (data.R)
-The dataset is generated via simulation and contains one observation per activity (exam or seminar).
+Exam 8: 9 CFU
 
+Exam 9: 9 CFU
 
-**Main Variables**
+Exam 10: 12 CFU (high workload exam)
 
-1. activity: activity identifier
-2. type: Exam or Seminar
-3. cfu: number of credits
-4. semester: semester in which the activity is offered
-5. grade: grade conditional on passing (exams only)
-6. p_pass: probability of passing
-7. lecture_hours: scheduled lecture hours
-8. study_hours: individual study hours
-9. total_time: total time required
-10. expected_grade: expected academic outcome
-11. efficiency: expected grade per hour invested
-12. Note on CFU Values
+Seminars (4)
 
+Seminars:
 
-The simulated dataset includes heterogeneous CFU values (6, 9, 12 for exams and 2–3 for seminars).
-This choice reflects realistic variability across university courses and directly affects the formulation of credit and time constraints in the optimization problem.
+do not provide grades,
 
-<br>
-  
-## Analysis Script (script.R)
-  
-The analysis script performs:  
-1. Descriptive statistics for exams and seminars
-2. Visualization of uncertainty in passing probabilities
-3. Analysis of expected academic performance
-4. Efficiency comparisons across exams
-5. Comparison of efficiency distributions by semester
+are always passed,
+
+provide CFU and require study time.
+
+Semester distribution
+
+S1: Seminar 1 (2 CFU), Seminar 2 (3 CFU)
+
+S2: Seminar 3 (2 CFU), Seminar 4 (3 CFU)
+
+Dataset generation (data.R)
+Uncertainty and realism
+
+The dataset is not deterministic.
+Instead, uncertainty is introduced by simulating outcomes for 100 students per exam.
+
+For each exam:
+
+A latent student ability is simulated.
+
+Students may fail (score < 18) or pass.
+
+From these simulations:
+
+the empirical probability of passing is computed,
+
+a grade parameter is assigned at the exam level.
+
+The grade is an exam characteristic, not a student outcome.
+
+Seminars:
+
+have probability of passing equal to 1,
+
+have no grade (set to NA).
+
+Expected grade
+
+For exams, performance under uncertainty is summarized using:
+
+expected_grade = probability_of_passing × grade
 
 
-The script produces the following plots:  
-1. Histogram of probabilities of passing exams
-2. Scatter plot of expected grade vs probability of passing
-3. Bar chart of exam efficiency
-4. Boxplot of efficiency by semester
+This allows comparison between:
 
-<br>
+a deterministic perspective (grade only),
 
-## Conclusion
-The project provides a clear methodological progression from a deterministic optimization model to a stochastic formulation that incorporates uncertainty.
-The R implementation focuses on data simulation and exploratory analysis, while the optimization framework is defined explicitly in the README as required.
+a stochastic perspective (expected grade).
+
+Exploratory analysis (script.R)
+
+Before optimization, the script includes:
+
+summary statistics for exams and seminars,
+
+distribution of passing probabilities,
+
+relationship between probability of passing and expected grade,
+
+efficiency analysis (expected grade per hour),
+
+semester-level comparisons.
+
+All plots are generated using ggplot2.
+
+Optimization problem
+Decision variables
+
+For each activity 
+𝑖
+i:
+
+𝑥
+𝑖
+=
+{
+1
+	
+if activity 
+𝑖
+ is selected
 
 
-<br>
+0
+	
+otherwise
+x
+i
+	​
 
+={
+1
+0
+	​
+
+if activity i is selected
+otherwise
+	​
+
+Students considered
+Student 1 – Early graduation
+
+Needs exactly 9 CFU
+
+Can only choose first semester (S1) activities
+
+Has a tighter time budget
+
+Student 2 – Later graduation
+
+Needs exactly 12 CFU
+
+Can choose activities from both semesters
+
+Has a larger available time budget
+
+Lexicographic optimization approach
+
+To strictly follow the logic of the exercise, a two-stage (lexicographic) linear programming approach is used.
+
+Stage 1 – Feasibility first
+
+Minimize the total number of CFU selected subject to reaching the required CFU.
+
+This guarantees:
+
+no extra credits,
+
+solutions with exactly 9 or 12 CFU.
+
+Stage 2 – Performance maximization
+
+Given the minimal CFU solution from Stage 1:
+
+Deterministic model
+Maximizes the sum of grades.
+
+Stochastic model
+Maximizes the sum of expected grades.
+
+Time constraints are imposed only as a secondary feasibility condition, reflecting the graduation deadline.
+
+Role of seminars
+
+Seminars play a crucial role:
+
+they provide certain CFU (probability = 1),
+
+they allow students to reach the required CFU without risk,
+
+they are often selected together with exams in optimal solutions.
+
+This reflects the real-world intuition that seminars are useful tools to complete remaining credits safely.
+
+Deterministic vs stochastic interpretation
+
+In the deterministic version, all selected exams are assumed to be passed.
+
+In the stochastic version, the student maximizes expected performance, explicitly accounting for failure risk.
+
+The comparison highlights how uncertainty affects academic planning decisions.
+
+Reproducibility
+
+The random seed is fixed (set.seed(123)).
+
+All results are fully reproducible.
+
+The professor can inspect:
+
+the dataset generation,
+
+the optimization model,
+
+the obtained solutions.
+
+Conclusion
+
+This project provides a complete and coherent implementation of a linear programming problem under uncertainty, fully aligned with the exercise description.
+It combines realistic data generation, clear economic intuition, and rigorous optimization modeling.
 ## Comments
 Comment: Interesting. You need to figure out how to include the probability of passing. As a first step, I suggest you to assume that the probability of passing is 1 and write the problem in standard form. Then you will generalize it. You can write pretty math here in the read me: just put the equation between the dollar sign and use simple formatting, as in this example: $x_1 + 2x_2  \le 3$ 
 
