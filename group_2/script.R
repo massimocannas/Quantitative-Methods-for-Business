@@ -7,6 +7,9 @@ data <- read_excel("C:/Users/franc/Desktop/International Management/QM/R/data.xl
 View(data)
 
 # clean dataset data ---
+
+data$product <- trimws(data$product)
+
 data <- data %>%
   fill(date, `available time per day(h)`, .direction = "down") %>%
   mutate(
@@ -116,3 +119,4 @@ solve_lp(lp_normal_data, lim_norm$F_cap, lim_norm$L_cap, lim_norm$W_cap)
 cat("\n--- Festive Days ---\n")
 lim_xmas <- filter(limits, period == "Christmas")
 solve_lp(lp_christmas_data, lim_xmas$F_cap, lim_xmas$L_cap, lim_xmas$W_cap)
+
