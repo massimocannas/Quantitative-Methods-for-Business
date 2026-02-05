@@ -120,3 +120,31 @@ cat("\n--- Festive Days ---\n")
 lim_xmas <- filter(limits, period == "Christmas")
 solve_lp(lp_christmas_data, lim_xmas$F_cap, lim_xmas$L_cap, lim_xmas$W_cap)
 
+# 15% increase in demand
+build_lp_data <- function(df, demand_growth = 1.15) {
+  df %>%
+    group_by(product) %>%
+    summarise(
+      price  = mean(price, na.rm = TRUE),
+      costs  = mean(costs, na.rm = TRUE),
+      flour  = mean(flour, na.rm = TRUE),
+      yeast  = mean(yeast, na.rm = TRUE),
+      time   = mean(time, na.rm = TRUE),
+      demand = max(demand, na.rm = TRUE) * demand_growth
+    ) %>%
+    arrange(product)
+}
+
+# new lp
+lp_normal_data    <- build_lp_data(data_normal, 1.15)
+lp_christmas_data <- build_lp_data(data_christmas, 1.15)
+
+# results
+
+cat("\n--- Normal Days ---\n")
+lim_norm <- filter(limits, period == "Normal")
+solve_lp(lp_normal_data, lim_norm$F_cap, lim_norm$L_cap, lim_norm$W_cap)
+
+cat("\n--- Festive Days ---\n")
+lim_xmas <- filter(limits, period == "Christmas")
+solve_lp(lp_christmas_data, lim_xmas$F_cap, lim_xmas$L_cap, lim_xmas$W_cap)
