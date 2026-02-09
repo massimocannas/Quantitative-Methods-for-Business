@@ -1,3 +1,4 @@
+## To run this script, please set the working directory to the source file location (In RStudio: Session > Set Working Directory > To Source File Location).
 # Library
 library(lpSolve)
 library(dplyr)
@@ -7,9 +8,9 @@ library(ggplot2)
 library(patchwork)
 library(scales)
 
-# Data
-library(readxl)
-data <- read_excel("C:/Users/franc/Desktop/International Management/QM/R/data.xlsx")
+# Import Data
+file_path <- "data.xlsx"
+data <- read_excel(file_path)
 View(data)
 
 # 1. Cleaning dataset
@@ -295,3 +296,4 @@ plot_plus <- ggplot(df_sat_plus, aes(x = Resource, y = Usage, fill = Usage)) +
 # Visual
 plot_std
 plot_plus
+
