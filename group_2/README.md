@@ -42,13 +42,13 @@ The dataset is structured daily and includes:
  - Available working hours per day 
 
 ### Preparation of the data
-To be able to work with our dataset, we had to filling missing dates and available working hours and onverting dates and classifying days into two periods: 
+To be able to work with our dataset, we had to fill missing dates and available working hours as well as converting the dates and classifying them into two periods: 
 
  - Normal days 
  - Festive days (Christmas period)
 
  
- We also had to computing total daily usage of flour and yeast and splitting the dataset by period to capture seasonal differences in production and demand 
+ We also had to compute total daily usage of flour and yeast and splitting the dataset by period to capture seasonal differences in production and demand 
  
 ## Methodology 
 We model the problem as a linear programming (LP) profit maximization problem, solved using the lpSolve package in R.  For each period (Normal and Festive), we:
