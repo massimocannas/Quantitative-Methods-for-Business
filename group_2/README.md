@@ -15,7 +15,20 @@ $$Max Z = \pi_1 x_1 + \pi_2 x_2$$
 To solve this, our model balances several real-world factors: 
  - **Constraints:** availability of flour, yeast, and working hours;
  - **Economic variables:** selling prices and production costs;
- - **Market Dynamics:** The fluctuation of demand from day to day. Maximum observed market demand for each product. 
+ - **Market Dynamics:** The fluctuation of demand from day to day. Maximum observed market demand for each product.
+
+## New Market Scenario (Demand Shock +15%)
+To assess the robustness of the model and simulate a realistic market change, we assumed a new scenario characterized by a +15% increase in demand for both products (bread and sweets), representing a sudden demand surge caused by the closure of three bakeries in the surrounding area.
+Formally, we updated the demand constraints as follows:
+
+$$D_{1,2}^{new}​=D_{1,2}×1.15$$
+
+Keeping the production constraints unchanged (flour, yeast, and labor hours), the model automatically recalculates the new optimal production mix for each period.
+This scenario allows us to understand:
+- whether the company is able to meet the increased demand with the current resources;
+- which products should be prioritized when the market demand rises;
+- whether operational constraints become bottlenecks (labor, flour, yeast).
+
 ## The Data 
 Originally, we planned to use simulated data for this analysis. However, given the additional time, we were able to obtain real operational data from an actual bakery. Instead of relying on perfect averages or estimated costs, we are now working with the real-world numbers of daily production. This shift transforms our work from a theoretical exercise into a concrete management tool, providing results that are grounded in reality and immediately applicable for the business owner.
 The dataset is structured daily and includes: 
